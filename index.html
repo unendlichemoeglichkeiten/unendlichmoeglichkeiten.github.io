@@ -1,27 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Location-based AR.js demo</title>
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-  </head>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
+        <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+        <script type='text/javascript' src='basic.js'></script>
 
-  <body style="margin: 0; overflow: hidden;">
-    <a-scene
-      vr-mode-ui="enabled: false"
-      embedded
-      arjs="sourceType: webcam; debugUIEnabled: false;"
-    >
-      <a-text
-        value="This content will always face you."
-        look-at="[gps-camera]"
-        scale="50 50 50"
-        gps-new-entity-place="latitude: 53.550513934657054; longitude: 10.047029446988034;" 
-        ></a-text>
-        <a-camera gps-camera rotation-reader> </a-camera>
-      </a-scene>
+    </head>
+
+    <body>
+        <a-scene 
+            vr-mode-ui='enabled: false' 
+            arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: true' 
+            renderer='antialias: true; alpha: true'
+        
+        >
+            <a-camera 
+                gps-new-camera='gpsMinDistance: 5'
+            >
+            </a-camera>
+
+            <a-entity 
+                gps-new-entity-place="latitude: 53.550513934657054; longitude: 10.047029446988034" 
+                scale="10 10 10">
+            </a-entity>
+
+        </a-scene>
     </body>
-  </html>
+</html>
